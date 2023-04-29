@@ -13,7 +13,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
   int perguntaSelecionada = 0;
 
   void responder() {
-    perguntaSelecionada++;
+    setState(() {
+      perguntaSelecionada++;
+    });
     print(perguntaSelecionada);
   }
 
