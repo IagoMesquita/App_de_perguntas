@@ -7,8 +7,11 @@ class PerguntaApp extends StatelessWidget {
 
   bool isActive = false;
 
+  int perguntaSelecionada = 1;
+
   void responder() {
-   debugPrint('Pergunta respondida!');
+   perguntaSelecionada++;
+   print(perguntaSelecionada);
   }
 
   final List<String> perguntas = [
@@ -27,9 +30,9 @@ class PerguntaApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(perguntas[0]),
+            Text(perguntas[perguntaSelecionada]),
              ElevatedButton(
-              onPressed:  isActive ? responder : null,
+              onPressed: responder,
               child: const Text('Resposta 1'),
             ),
             ElevatedButton(
@@ -37,14 +40,8 @@ class PerguntaApp extends StatelessWidget {
               child: const Text('Resposta 2'),
             ),
             ElevatedButton(
-              onPressed: () {
-                debugPrint('Pergunta resondida 3');
-              },
+              onPressed: responder,
               child: const Text('Resposta 3'),
-            ),
-            ElevatedButton(
-              onPressed: () => debugPrint('Pergunta resondida'),
-              child: const Text('Resposta 4'),
             ),
           ],
         ),
