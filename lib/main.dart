@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(PerguntaApp());
+void main() => runApp(const PerguntaApp());
 
 class PerguntaApp extends StatefulWidget {
   const PerguntaApp({super.key});
@@ -9,14 +9,13 @@ class PerguntaApp extends StatefulWidget {
 }
 
 class _PerguntaAppState extends State<PerguntaApp> {
-  _PerguntaAppState();
-  int perguntaSelecionada = 0;
+  // _PerguntaAppState();
+  int _perguntaSelecionada = 0;
 
-  void responder() {
+  void _responder() {
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
-    print(perguntaSelecionada);
   }
 
   final List<String> perguntas = [
@@ -35,17 +34,17 @@ class _PerguntaAppState extends State<PerguntaApp> {
         ),
         body: Column(
           children: [
-            Text(perguntas[perguntaSelecionada]),
+            Text(perguntas[_perguntaSelecionada]),
             ElevatedButton(
-              onPressed: responder,
+              onPressed: _responder,
               child: const Text('Resposta 1'),
             ),
             ElevatedButton(
-              onPressed: responder,
+              onPressed: _responder,
               child: const Text('Resposta 2'),
             ),
             ElevatedButton(
-              onPressed: responder,
+              onPressed: _responder,
               child: const Text('Resposta 3'),
             ),
           ],
