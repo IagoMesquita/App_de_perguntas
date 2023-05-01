@@ -12,7 +12,7 @@ class PerguntaApp extends StatefulWidget {
 
 class _PerguntaAppState extends State<PerguntaApp> {
   _PerguntaAppState();
-  
+
   int _perguntaSelecionada = 0;
 
   void _responder() {
@@ -21,9 +21,20 @@ class _PerguntaAppState extends State<PerguntaApp> {
     });
   }
 
-  final List<String> perguntas = [
-    'Qual sua cor favorita?',
-    'Qual seu animal favorito?'
+  // objct é um type mais generico, servindo para String, List ...
+  final List<Map<String, Object>> perguntas = [
+    {
+      'texto': 'Qual seu animal favorito?',
+      'resposta': ['Lobo', 'Aguia', 'Cavalo', 'Tigre']
+    },
+    {
+      'texto': 'Qual sua cor favorito?',
+      'resposta': ['Verde', 'Azul', 'Preto', 'Braco']
+    },
+    {
+      'texto': 'Qual seu professor favorito?',
+      'resposta': ['Leo', 'Guanabara', 'Felipe', 'Matheus']
+    },
   ];
 
   @override
@@ -38,11 +49,10 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             // Questao(texto: perguntas[_perguntaSelecionada]),
-            Questao(perguntas[_perguntaSelecionada]),
+            Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
             Resposta('Resposta 1', _responder),
             Resposta('Resposta 2', _responder),
             Resposta('Resposta 3', _responder),
-            
           ],
         ),
       ),
