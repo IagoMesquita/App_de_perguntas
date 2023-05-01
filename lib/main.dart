@@ -37,6 +37,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
     },
   ];
 
+  List<Widget> respostas = [];
+
+  // forma imperativa
+  for( var textoResposta in perguntas[_perguntaSelecionada].cast()['resposta'] ) {
+    respostas.add(Resposta(textoResposta, _responder));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -50,9 +57,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
           children: [
             // Questao(texto: perguntas[_perguntaSelecionada]),
             Questao(perguntas[_perguntaSelecionada]['texto'].toString()),
-            Resposta('Resposta 1', _responder),
-            Resposta('Resposta 2', _responder),
-            Resposta('Resposta 3', _responder),
+            ...respostas,
+      
           ],
         ),
       ),
