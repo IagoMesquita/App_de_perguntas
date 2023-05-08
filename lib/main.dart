@@ -14,29 +14,47 @@ class _PerguntaAppState extends State<PerguntaApp> {
   // _PerguntaAppState();
 
   int _perguntaSelecionada = 0;
+  int _pontuacaoTotal = 0;
 
   // objct é um type mais generico, servindo para String, List ...
   final List<Map<String, Object>> _perguntas = const [
     {
       'texto': 'Qual seu animal favorito?',
-      'respostas': ['Lobo', 'Aguia', 'Cavalo', 'Tigre']
+      'respostas': [
+        {'texto': 'Lobo', 'pontuacao': 10},
+        {'texto': 'Aguia', 'pontuacao': 5},
+        {'texto': 'Cavalo', 'pontuacao': 3},
+        {'texto': 'Tigre', 'pontuacao': 1}
+      ]
     },
     {
       'texto': 'Qual sua cor favorito?',
-      'respostas': ['Verde', 'Azul', 'Preto', 'Braco']
+      'respostas': [
+        {'texto': 'Verde', 'pontuacao': 10},
+        {'texto': 'Azul', 'pontuacao': 5},
+        {'texto': 'Preto', 'pontuacao': 3},
+        {'texto': 'Braco', 'pontuacao': 1},
+      ]
     },
     {
       'texto': 'Qual seu professor favorito?',
-      'respostas': ['Leo', 'Guanabara', 'Felipe', 'Matheus']
+      'respostas': [
+        {'texto': 'Leo', 'pontuacao': 10},
+        {'texto': 'Guanabara', 'pontuacao': 5},
+        {'texto': 'Felipe', 'pontuacao': 3},
+        {'texto': 'Matheus', 'pontuacao': 1},
+      ]
     },
   ];
 
-  void _responder() {
+  void _responder(int pontuacao) {
     if (temPerguntaSelecionada) {
       setState(() {
         _perguntaSelecionada++;
+        _pontuacaoTotal += pontuacao;
       });
     }
+    print(_pontuacaoTotal);
   }
 
   bool get temPerguntaSelecionada {
@@ -70,7 +88,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntaSelecionada: _perguntaSelecionada,
                 quandoResponder: _responder,
               )
-            : const Resultado(),
+            : Resultado(_pontuacaoTotal),
       ),
     );
   }
